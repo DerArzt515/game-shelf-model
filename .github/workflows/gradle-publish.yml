@@ -44,8 +44,8 @@ jobs:
           arguments: build
 
       - name: List stuff
-          - steps:
-              - run: ls -a
+          steps:
+            - run: ls -a
 
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
