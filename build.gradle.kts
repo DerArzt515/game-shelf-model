@@ -22,7 +22,6 @@ configure<PublishingExtension> {
     }
     publications {
         register<MavenPublication>("gpr") {
-//            from(components["java"])
             groupId = group
             version = version
             artifact("$buildDir/libs/$artifactId-jvm-*.jar")
