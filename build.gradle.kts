@@ -21,7 +21,8 @@ configure<PublishingExtension> {
     }
     publications {
         register<MavenPublication>("gpr") {
-            from(components["java"])
+//            from(components["java"])
+            artifact("$buildDir/libs/$artifactId-jvm-*.jar")
         }
     }
 }
@@ -32,9 +33,6 @@ val version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
 }
-
-group = "dev.cavalier"
-version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
