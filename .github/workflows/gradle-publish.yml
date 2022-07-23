@@ -22,7 +22,7 @@ on:
 
 jobs:
   build:
-
+    environment: publish
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -51,4 +51,4 @@ jobs:
         arguments: publish
       env:
         USERNAME: ${{ github.actor }}
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TOKEN: ${{ secrets.PAS }}
