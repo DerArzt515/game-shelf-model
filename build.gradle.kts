@@ -33,9 +33,6 @@ repositories {
     mavenCentral()
 }
 
-group = "dev.cavalier"
-version = "1.0-SNAPSHOT"
-
 repositories {
     mavenCentral()
 }
