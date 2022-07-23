@@ -1,5 +1,36 @@
 plugins {
     kotlin("multiplatform") version "1.7.10"
+    `maven-publish`
+}
+
+val githubOwner = "DerArzt515"
+val repository = "game-shelf-model"
+
+configure<PublishingExtension> {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/$githubOwner/$repository")
+            credentials {
+                username = project.findProperty("gpr.user") as String?
+                    ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") as String?
+                    ?: System.getenv("TOKEN")
+            }
+        }
+    }
+    publications {
+        register<MavenPublication>("gpr") {
+            from(components["java"])
+        }
+    }
+}
+
+val group = "dev.cavalier"
+val version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
 }
 
 group = "dev.cavalier"
@@ -35,7 +66,7 @@ kotlin {
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
 
-    
+
     sourceSets {
         val commonMain by getting
         val commonTest by getting {
