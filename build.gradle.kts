@@ -2,7 +2,8 @@ plugins {
     kotlin("multiplatform") version "1.7.10"
     `maven-publish`
 }
-
+val group = "dev.cavalier"
+val version = "1.0-SNAPSHOT"
 val githubOwner = "DerArzt515"
 val repository = "game-shelf-model"
 
@@ -22,13 +23,12 @@ configure<PublishingExtension> {
     publications {
         register<MavenPublication>("gpr") {
 //            from(components["java"])
+            groupId = group
+            version = version
             artifact("$buildDir/libs/$artifactId-jvm-*.jar")
         }
     }
 }
-
-val group = "dev.cavalier"
-val version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
