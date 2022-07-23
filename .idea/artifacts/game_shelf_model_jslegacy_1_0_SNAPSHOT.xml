@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="game-shelf-model-jslegacy-1.0-SNAPSHOT">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <root id="archive" name="game-shelf-model-jslegacy-1.0-SNAPSHOT.jar">
+      <element id="module-output" name="game-shelf-model.jsMain" />
+    </root>
+  </artifact>
+</component>
