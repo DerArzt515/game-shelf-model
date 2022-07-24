@@ -24,7 +24,7 @@ configure<PublishingExtension> {
         register<MavenPublication>("gpr") {
             groupId = group
             version = version
-            artifact("$buildDir/libs/$artifactId-jvm-*.jar")
+            artifact("$buildDir/libs/$artifactId-jvm.jar")
         }
     }
 }
