@@ -8,6 +8,9 @@
 name: Gradle Package
 
 on:
+  release:
+    types:
+      - released
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
