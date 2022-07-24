@@ -3,6 +3,7 @@ import java.lang.System.getenv
 plugins {
     kotlin("multiplatform") version "1.7.10"
     id("maven-publish")
+    kotlin("plugin.serialization") version "1.7.10"
 }
 val groupId = "dev.cavalier"
 val githubOwner = "DerArzt515"
@@ -12,6 +13,8 @@ val repository = "game-shelf-model"
 repositories {
     mavenCentral()
 }
+
+
 
 kotlin {
     jvm {
@@ -41,7 +44,11 @@ kotlin {
 
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0-RC")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))

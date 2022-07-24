@@ -1,4 +1,18 @@
-data class Game(val title: String) {
-    fun describe() = "The title is $title"
-}
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class Game(
+    val title: String,
+    val playerCount: MinMax,
+    val playTime: MinMax,
+    val publishers: List<String>,
+    val designers: List<String>
+)
+
+@Serializable
+data class MinMax(
+    val min: Int,
+    val max: Int
+)
+
 
