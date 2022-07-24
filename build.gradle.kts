@@ -24,7 +24,7 @@ configure<PublishingExtension> {
         register<MavenPublication>("gpr") {
             groupId = group
             version = packageVersion
-            artifact("$buildDir/libs/game-shelf-model-jvm.jar")
+//            artifact("$buildDir/libs/game-shelf-model-jvm.jar")
         }
     }
 }
