@@ -3,7 +3,7 @@ plugins {
     `maven-publish`
 }
 val group = "dev.cavalier"
-val version = "1.0-SNAPSHOT"
+val packageVersion = "1.0-SNAPSHOT"
 val githubOwner = "DerArzt515"
 val repository = "game-shelf-model"
 
@@ -23,14 +23,10 @@ configure<PublishingExtension> {
     publications {
         register<MavenPublication>("gpr") {
             groupId = group
-            version = version
+            version = packageVersion
             artifact("$buildDir/libs/game-shelf-model-jvm.jar")
         }
     }
-}
-
-repositories {
-    mavenCentral()
 }
 
 repositories {
