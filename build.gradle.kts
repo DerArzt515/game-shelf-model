@@ -1,33 +1,13 @@
+import java.lang.System.getenv
+
 plugins {
     kotlin("multiplatform") version "1.7.10"
-    `maven-publish`
+    id("maven-publish")
 }
-val group = "dev.cavalier"
-val packageVersion = "1.0-SNAPSHOT"
+val groupId = "dev.cavalier"
 val githubOwner = "DerArzt515"
 val repository = "game-shelf-model"
 
-configure<PublishingExtension> {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/$githubOwner/$repository")
-            credentials {
-                username = project.findProperty("gpr.user") as String?
-                    ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") as String?
-                    ?: System.getenv("TOKEN")
-            }
-        }
-    }
-    publications {
-        register<MavenPublication>("gpr") {
-            groupId = group
-            version = packageVersion
-//            artifact("$buildDir/libs/game-shelf-model-jvm.jar")
-        }
-    }
-}
 
 repositories {
     mavenCentral()
@@ -74,4 +54,21 @@ kotlin {
         val nativeMain by getting
         val nativeTest by getting
     }
+}
+
+getenv("GITHUB_REPOSITORY")?.let {
+    publishing {
+        repositories {
+            maven {
+                name = "github"
+                url = uri("https://maven.pkg.github.com/$it")
+                credentials(PasswordCredentials::class)
+            }
+        }
+    }
+}
+
+allprojects {
+    group = groupId
+    version = getenv("GITHUB_REF")?.split('/')?.last() ?: "development"
 }
