@@ -2,6 +2,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Game(
+    val id: Int?,
     val title: String,
     val playerCount: MinMax,
     val playTime: MinMax,
